@@ -10,11 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var youTubeData: YouTubeModel?
+    var youTubeData: [Items]?
+    @IBOutlet weak var videosTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        videosTableView.register(UINib(nibName: "VideosTableViewCell", bundle: nil), forCellReuseIdentifier: "VideosTableViewCell")
         fetchYouTubeData()
     }
 
@@ -26,7 +28,12 @@ class ViewController: UIViewController {
             switch result {
                 
             case .success(let video):
-                _self.youTubeData = video
+                _self.youTubeData = video.items
+                
+                DispatchQueueHelper.delay(bySeconds: 0.1, dispatchLevel: .main) {
+                    _self.videosTableView.reloadData()
+                }
+                
                 // need thumbnail for high
                 // need videoId from resourceId
                 
@@ -37,5 +44,20 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return youTubeData?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = videosTableView.dequeueReusableCell(withIdentifier: "VideosTableViewCell", for: indexPath)
+        
+        return cell
+    }
+    
+}
 
 
