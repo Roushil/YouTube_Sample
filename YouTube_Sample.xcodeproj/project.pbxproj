@@ -95,6 +95,23 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		2B96E443249A25F3009D87C0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2B8B60652492447E001CECA8 /* VideosTableViewCell.swift */,
+				2B8B60662492447E001CECA8 /* VideosTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2B96E444249A2620009D87C0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2BCDF8242488FDE300974942 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		2BCDF8142488FDE300974942 = {
 			isa = PBXGroup;
 			children = (
@@ -120,9 +137,8 @@
 				2B8B606924924939001CECA8 /* DispatchQueueHelper.swift */,
 				2B0FAAA924891BCC008F809E /* Service */,
 				2B0FAA9224891ACF008F809E /* Model */,
-				2BCDF8242488FDE300974942 /* ViewController.swift */,
-				2B8B60652492447E001CECA8 /* VideosTableViewCell.swift */,
-				2B8B60662492447E001CECA8 /* VideosTableViewCell.xib */,
+				2B96E444249A2620009D87C0 /* Controllers */,
+				2B96E443249A25F3009D87C0 /* View */,
 				2BCDF8262488FDE300974942 /* Main.storyboard */,
 				2BCDF8292488FDE400974942 /* Assets.xcassets */,
 				2BCDF82B2488FDE400974942 /* LaunchScreen.storyboard */,

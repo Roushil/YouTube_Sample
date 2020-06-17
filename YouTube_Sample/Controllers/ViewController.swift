@@ -33,8 +33,6 @@ class ViewController: UIViewController {
                 DispatchQueueHelper.delay(bySeconds: 0.1, dispatchLevel: .main) {
                     _self.videosTableView.reloadData()
                 }
-                
-                // need thumbnail for high
                 // need videoId from resourceId
                 
             case .failure(let error):
@@ -53,9 +51,14 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = videosTableView.dequeueReusableCell(withIdentifier: "VideosTableViewCell", for: indexPath)
-        
+        let cell = videosTableView.dequeueReusableCell(withIdentifier: "VideosTableViewCell", for: indexPath) as! VideosTableViewCell
+        guard let items = youTubeData?[indexPath.row] else { return UITableViewCell() }
+        cell.configure(with: items)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
 }
